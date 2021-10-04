@@ -1,0 +1,13 @@
+<p>
+    <mat-button-toggle-group #groupy="matButtonToggleGroup"
+     appearance="legacy" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="SignosVitales" routerLink="/pages/signos/consulta" aria-checked="true">Consultar Signos Vitales</mat-button-toggle>
+      <mat-button-toggle value="Registrar" routerLink="/pages/signos/nuevo">Registrar Signos</mat-button-toggle>
+      <!--<mat-button-toggle value="Modificar" routerLink="/pages/signos/edicion/1">Modificar</mat-button-toggle>-->
+    </mat-button-toggle-group>
+  </p>
+
+  <div *ngIf="groupy.value==null">
+    Seleccione la operación que desea realizar
+  </div>
+<router-outlet></router-outlet>

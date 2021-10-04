@@ -1,0 +1,62 @@
+<router-outlet></router-outlet>
+
+<div class="filter-signos">
+    <mat-form-field>
+        <input matInput (keyup)="filtrar($event)" placeholder="Buscar paciente">
+    </mat-form-field>
+  </div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" >
+
+    <ng-container matColumnDef="idSignos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.idSignos}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="paciente.dni">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI </th>
+        <td mat-cell *matCellDef="let element"> {{element.paciente.dni}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="paciente.nombres">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.paciente.nombres}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="paciente.apellidos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellidos </th>
+        <td mat-cell *matCellDef="let element"> {{element.paciente.apellidos}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="temperatura">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura </th>
+        <td mat-cell *matCellDef="let element"> {{element.temperatura}} </td>
+    </ng-container>
+    <ng-container matColumnDef="pulso">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pulso </th>
+        <td mat-cell *matCellDef="let element"> {{element.pulso}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ritmoRespiratorio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ritmo Respiratorio </th>
+        <td mat-cell *matCellDef="let element"> {{element.ritmoRespiratorio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-button color="primary" [routerLink]="['/pages/signos/edicion/', element.idSignos]">
+                <mat-icon>ballot</mat-icon>
+            </button>
+            <button mat-button color="primary" (click)="eliminar(element.idSignos)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+   
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
